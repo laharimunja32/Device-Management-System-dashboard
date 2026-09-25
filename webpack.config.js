@@ -15,21 +15,17 @@ module.exports = {
 
     module: {
         rules: [
-            {
-                test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
-                type: "javascript/auto",
-                use: {
-                    loader: "babel-loader",
-                    options: {
-                        sourceType: "unambiguous",
-                        presets: [
-                            "@babel/preset-env",
-                            "@babel/preset-react"
-                        ]
-                    }
-                }
-            },
+        {
+    test: /\.(js|jsx)$/,
+    exclude: /node_modules/,
+    type: "javascript/auto",
+    use: {
+        loader: "babel-loader",
+        options: {
+            sourceType: "unambiguous"
+        }
+    }
+},
             {
                 test: /\.css$/,
                 use: [
@@ -57,14 +53,5 @@ module.exports = {
                 }
             ]
         })
-    ],
-
-    devServer: {
-        static: {
-            directory: path.join(__dirname, "dist")
-        },
-        port: 3000,
-        open: true,
-        hot: true
-    }
+    ]
 };
