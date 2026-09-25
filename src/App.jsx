@@ -5,14 +5,21 @@ function App() {
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState("");
+    const [showSuccessModal, setShowSuccessModal] = useState(false);
 
     const handleLogin = (e) => {
         e.preventDefault();
 
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const trimmedLoginId = loginId.trim();
+        const loginIdRegex = /^[a-zA-Z0-9]+$/;
 
-        if (!emailRegex.test(loginId)) {
-            setError("Please enter a valid email address.");
+        if (!trimmedLoginId) {
+            setError("Please enter your login ID.");
+            return;
+        }
+
+        if (!loginIdRegex.test(trimmedLoginId)) {
+            setError("Login ID can only contain letters and numbers.");
             return;
         }
 
@@ -22,7 +29,11 @@ function App() {
         }
 
         setError("");
-        alert("Login successful!");
+        setShowSuccessModal(true);
+    };
+
+    const closeSuccessModal = () => {
+        setShowSuccessModal(false);
     };
 
     return (
@@ -90,42 +101,33 @@ function App() {
 
                 <div className="login-card">
 
-                    <h2>Welcome Back</h2>
-
-                    <p className="login-subtitle">
-                        Sign in to access the Device Management System
-                    </p>
+                    <div className="login-header">
+                        <h2>Welcome Back</h2>
+                        <p>
+                            Sign in to access the Device Management System
+                        </p>
+                    </div>
 
                     <form onSubmit={handleLogin}>
 
-                        <div className="form-group">
-
-                            <label htmlFor="loginId">
-                                Email Address
-                            </label>
-
+                        <div className="input-group">
+                            <label htmlFor="loginId">Login ID</label>
                             <input
                                 id="loginId"
                                 type="text"
-                                placeholder="Enter your email address"
+                                placeholder="Enter your login ID"
+                                autoComplete="username"
                                 value={loginId}
                                 onChange={(e) => {
                                     setLoginId(e.target.value);
                                     setError("");
                                 }}
                             />
-
                         </div>
 
-
-                        <div className="form-group">
-
-                            <label htmlFor="password">
-                                Password
-                            </label>
-
-                            <div className="password-container">
-
+                        <div className="input-group">
+                            <label htmlFor="password">Password</label>
+                            <div className="password-wrapper">
                                 <input
                                     id="password"
                                     type={showPassword ? "text" : "password"}
@@ -136,28 +138,21 @@ function App() {
                                         setError("");
                                     }}
                                 />
-
                                 <button
                                     type="button"
-                                    className="show-password"
+                                    className="password-toggle"
                                     onClick={() =>
                                         setShowPassword(!showPassword)
                                     }
                                 >
                                     {showPassword ? "Hide" : "Show"}
                                 </button>
-
                             </div>
-
                         </div>
 
-
                         {error && (
-                            <div className="error-message">
-                                {error}
-                            </div>
+                            <div className="error-message">{error}</div>
                         )}
-
 
                         <button
                             type="submit"
@@ -165,12 +160,11 @@ function App() {
                         >
                             Sign In
                         </button>
-
                     </form>
 
-                    <p className="login-footer">
-                        Authorized users only
-                    </p>
+                    <div className="login-footer">
+                        <p>Authorized users only</p>
+                    </div>
 
                 </div>
 
@@ -179,6 +173,35 @@ function App() {
                 </div>
 
             </div>
+
+            {showSuccessModal && (
+                <div
+                    className="modal-overlay"
+                    onClick={closeSuccessModal}
+                    role="presentation"
+                >
+                    <div
+                        className="modal-dialog"
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="success-modal-title"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="modal-icon" aria-hidden="true">
+                            ✓
+                        </div>
+                        <h3 id="success-modal-title">Login successful!</h3>
+                        <p>You are signed in to the Device Management System.</p>
+                        <button
+                            type="button"
+                            className="modal-button"
+                            onClick={closeSuccessModal}
+                        >
+                            OK
+                        </button>
+                    </div>
+                </div>
+            )}
 
         </div>
     );
