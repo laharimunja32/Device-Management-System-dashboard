@@ -10,22 +10,23 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, "dist"),
         filename: "bundle.js",
+        publicPath: "/Device-Management-System-dashboard/",
         clean: true
     },
 
     module: {
         rules: [
-        {
-    test: /\.(js|jsx)$/,
-    exclude: /node_modules/,
-    type: "javascript/auto",
-    use: {
-        loader: "babel-loader",
-        options: {
-            sourceType: "unambiguous"
-        }
-    }
-},
+            {
+                test: /\.(js|jsx)$/,
+                exclude: /node_modules/,
+                type: "javascript/auto",
+                use: {
+                    loader: "babel-loader",
+                    options: {
+                        sourceType: "unambiguous"
+                    }
+                }
+            },
             {
                 test: /\.css$/,
                 use: [
