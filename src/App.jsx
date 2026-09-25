@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import SldDashboard from "./SldDashboard";
 
 function App() {
+    const [page, setPage] = useState("login");
     const [loginId, setLoginId] = useState("");
     const [password, setPassword] = useState("");
     const [showPassword, setShowPassword] = useState(false);
@@ -34,7 +36,25 @@ function App() {
 
     const closeSuccessModal = () => {
         setShowSuccessModal(false);
+        setPage("dashboard");
     };
+
+    const handleSignOut = () => {
+        setLoginId("");
+        setPassword("");
+        setError("");
+        setShowSuccessModal(false);
+        setPage("login");
+    };
+
+    if (page === "dashboard") {
+        return (
+            <SldDashboard
+                loginId={loginId.trim()}
+                onSignOut={handleSignOut}
+            />
+        );
+    }
 
     return (
         <div className="login-page">
@@ -175,11 +195,7 @@ function App() {
             </div>
 
             {showSuccessModal && (
-                <div
-                    className="modal-overlay"
-                    onClick={closeSuccessModal}
-                    role="presentation"
-                >
+                <div className="modal-overlay" role="presentation">
                     <div
                         className="modal-dialog"
                         role="dialog"

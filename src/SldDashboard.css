@@ -1,0 +1,171 @@
+.sld-dashboard-page {
+    min-height: 100vh;
+    background: #f3f4f6;
+    color: #1f2937;
+}
+
+.sld-dashboard-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+    flex-wrap: wrap;
+
+    padding: 28px 40px;
+
+    background: linear-gradient(
+        145deg,
+        #4c1d95 0%,
+        #6d28d9 50%,
+        #7c3aed 100%
+    );
+    color: #ffffff;
+}
+
+.sld-dashboard-eyebrow {
+    font-size: 13px;
+    color: #ede9fe;
+    margin-bottom: 6px;
+}
+
+.sld-dashboard-header h1 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.sld-dashboard-user {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+
+    font-size: 14px;
+}
+
+.sld-dashboard-user button {
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    border-radius: 7px;
+    padding: 8px 14px;
+
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.sld-dashboard-user button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.sld-dashboard-main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 32px 24px 48px;
+}
+
+.sld-dashboard-section {
+    margin-bottom: 28px;
+}
+
+.sld-dashboard-section h2 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2e1065;
+    margin-bottom: 14px;
+}
+
+.sld-type-card {
+    background: #ffffff;
+    border: 1px solid #e5e0f5;
+    border-radius: 10px;
+    padding: 18px 20px;
+
+    box-shadow: 0 8px 24px rgba(76, 29, 149, 0.08);
+}
+
+.sld-type-label {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #6d28d9;
+    margin-bottom: 6px;
+}
+
+.sld-type-card p {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.sld-capability-list {
+    list-style: none;
+    display: grid;
+    gap: 14px;
+}
+
+.sld-capability-card {
+    background: #ffffff;
+    border: 1px solid #e5e0f5;
+    border-radius: 10px;
+    padding: 18px 20px;
+
+    box-shadow: 0 8px 24px rgba(76, 29, 149, 0.06);
+}
+
+.sld-capability-card h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #374151;
+    margin-bottom: 8px;
+}
+
+.sld-capability-card p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #6b7280;
+}
+
+.sld-speed-panel {
+    background: #ffffff;
+    border: 1px solid #e5e0f5;
+    border-radius: 12px;
+    padding: 24px;
+
+    text-align: center;
+
+    box-shadow: 0 12px 30px rgba(76, 29, 149, 0.1);
+}
+
+.sld-speed-value {
+    font-size: 56px;
+    font-weight: 700;
+    color: #6d28d9;
+    line-height: 1;
+}
+
+.sld-speed-unit {
+    display: block;
+    margin-top: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    color: #4b5563;
+}
+
+.sld-speed-note {
+    margin-top: 14px;
+    font-size: 13px;
+    color: #9ca3af;
+}
+
+@media (max-width: 640px) {
+    .sld-dashboard-header {
+        padding: 22px 18px;
+    }
+
+    .sld-dashboard-header h1 {
+        font-size: 24px;
+    }
+}
